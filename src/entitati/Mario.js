@@ -1,4 +1,5 @@
 import Vector from '../matematica/Vector.js';
+import { esteSolid } from '../nivel/logicaNivel.js';
 
 /**
  * Clasă definită de utilizator pentru gestionarea stării și reprezentării personajului Mario.
@@ -34,6 +35,16 @@ export default class Mario {
         // Dacă nu punem o limită, Mario va cădea la infinit prin ecran.
         // Scrie o condiție (if) care să verifice dacă this.pozitie.y depășește o anumită valoare (ex: 200).
         // Dacă o depășește, resetează poziția la 200 și oprește viteza pe Y.
+
+	/* TODO-ul anterior este ceva temporar, cand esteSolid() va fi gata, logica sa va fi inlocuita de:
+	// Verifică coliziunea înainte de a schimba poziția
+        // Sfat: Verifică dacă punctul de la picioarele lui Mario (pozitie.x, pozitie.y + 32) este solid
+        if (esteSolid(this.pozitie.x, this.pozitie.y + 32)) {
+            this.viteza.y = 0; // Oprim căderea
+        } else {
+            this.pozitie.adauga(this.viteza); // Altfel, continuă să cadă
+        }
+        */
     }
     
     sari() {
