@@ -1,5 +1,28 @@
 import React, { useRef, useEffect } from 'react';
 import Mario from '../entitati/Mario.js';
+//import { NIVEL_1_1, TILE_SIZE } from '../nivel/harta.js'; // Importă datele hărții - se decomenteaza linia la momentul potrivit
+
+/**
+ * TODO Student: Pasul (Funcția de Desenare Nivel)
+ * Implementează o funcție care să randeze harta pe Canvas.
+ * * Pași logici:
+ * 1. Primește 'context' (2D) și 'harta' (matricea NIVEL_1_1) ca parametri.
+ * 2. Folosește două bucle for (sau forEach - daca stilul specific JS este cu forEach sa uzezi asta) imbricate pentru a parcurge matricea:
+ * - Prima buclă parcurge rândurile (Y).
+ * - A doua buclă parcurge coloanele (X) din rândul respectiv.
+ * 3. Identifică valoarea celulei:
+ * - Dacă este 1, setează context.fillStyle = 'brown' (pământ).
+ * - Dacă este 2, setează context.fillStyle = 'orange' (bloc întrebare).
+ * 4. Calculează poziția de desenare:
+ * - Desenăm la (coloana * TILE_SIZE, rand * TILE_SIZE).
+ * 5. Folosește context.fillRect() pentru a desena pătratul de dimensiune TILE_SIZE.
+ */
+function deseneazaNivel(context, harta) {
+    // Implementează aici parcurgerea matricei
+}
+
+// În interiorul buclei principale (requestAnimationFrame), 
+// va trebui să apelezi deseneazaNivel(context, NIVEL_1_1);
 
 /**
  *Componentă React responsabilă pentru afisarea suprafeței de joc
