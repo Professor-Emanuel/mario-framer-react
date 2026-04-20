@@ -1,6 +1,6 @@
 import React, { useRef, useEffect } from 'react';
 import Mario from '../entitati/Mario.js';
-//import { NIVEL_1_1, TILE_SIZE } from '../nivel/harta.js'; // Importă datele hărții - se decomenteaza linia la momentul potrivit
+import { NIVEL_1_1, TILE_SIZE } from '../nivel/harta.js'; // Importă datele hărții - se decomenteaza linia la momentul potrivit
 
 /**
  * TODO Student: Pasul (Funcția de Desenare Nivel)
@@ -17,17 +17,35 @@ import Mario from '../entitati/Mario.js';
  * - Desenăm la (coloana * TILE_SIZE, rand * TILE_SIZE).
  * 5. Folosește context.fillRect() pentru a desena pătratul de dimensiune TILE_SIZE.
  */
+
 function deseneazaNivel(context, harta) {
-    // Implementează aici parcurgerea matricei
+    // 1. Prima buclă parcurge rândurile (axa Y)
+    for (let rand = 0; rand < harta.length; rand++) {
+        
+        // 2. A doua buclă parcurge coloanele (axa X) din rândul curent
+        for (let coloana = 0; coloana < harta[rand].length; coloana++) {
+            
+            // 3. Identificăm valoarea celulei curente
+            let valoareCelula = harta[rand][coloana];
+
+            if (valoareCelula === 1) {
+                context.fillStyle = 'brown'; // <- Pune culoarea cerută de Emanuel aici
+            } else if (valoareCelula === 2) {
+                context.fillStyle = 'orange'; // <- Pune culoarea cerută de Emanuel aici
+            } else {
+                // Dacă valoarea e 0 (sau goală), nu desenăm nimic și trecem la următoarea
+                continue; 
+            }
+
+            // 4. Calculăm poziția de desenare pe ecran
+            let pozitieX = coloana * TILE_SIZE;
+            let pozitieY = rand * TILE_SIZE;
+
+            // 5. Desenăm pătratul efectiv
+            context.fillRect(pozitieX, pozitieY, TILE_SIZE, TILE_SIZE);
+        }
+    }
 }
-
-// În interiorul buclei principale (requestAnimationFrame), 
-// va trebui să apelezi deseneazaNivel(context, NIVEL_1_1);
-
-/**
- *Componentă React responsabilă pentru afisarea suprafeței de joc
- *Și gestionareaa buclei principale de animație
- */ 
 const EcranJoc = () => {
     //Referință către <canvas> (Element DOM)
     const canvasRef = useRef(null);
